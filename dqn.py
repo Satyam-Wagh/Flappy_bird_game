@@ -1,0 +1,16 @@
+import torch
+import torch.nn
+
+class DQN(nn.Module):
+    def __init__(self,state_dim=12,action_dim=2,hidden_dim=256):
+        #input dim,output dim,hidden dim
+        super(DQN,self).__init__()
+        
+        self.model=nn.Sequntial(
+            nn.Linear(state_dim,hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim,action_dim)
+            )
+        
+    def forward(self,x):
+        return self.model(x)
